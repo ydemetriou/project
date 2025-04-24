@@ -12,6 +12,9 @@ RUN curl -sS https://get.symfony.com/cli/installer | bash \
 
 COPY ./apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
 RUN a2enmod rewrite
 
 WORKDIR /var/www/html
